@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: wikipedia-mcp-server
+    runtime: python
+    plan: free
+    buildCommand: pip install .
+    startCommand: uvicorn wikipedia_mcp.app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
